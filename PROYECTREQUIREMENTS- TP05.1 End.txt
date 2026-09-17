@@ -1,0 +1,26 @@
+# Project Requirements - TP05.1 Endless Runner 2D
+
+## 1. Conventions & Structure
+* **Repository & Project:** `TP05_C1_BlancoRomero_EndlessRunner` (or preferred title).
+* **Architecture:** Strict decoupling via ScriptableObjects and component-based OOP.
+* **Memory Management:** Mandatory use of Object Pooling for continuous obstacle and environment generation.
+
+## 2. Core Gameplay (Endless Runner)
+* [ ] **Continuous Movement:** The player moves forward continuously with no way to stop.
+* [ ] **Jump:** Jumping mechanics with robust ground detection (GroundCheck).
+* [ ] **Random Spawner:** Dynamic spawning of obstacles and platforms at randomized distances and heights using Object Pooling.
+* [ ] **Power-Ups / Modifiers:** Pickups or events that subtly alter gameplay (e.g., double jump, temporary invincibility, speed modifiers).
+* [ ] **Game Over Loop:** Lethal collision detection with obstacles and match restart/reset flow.
+
+## 3. Data & Configuration (ScriptableObjects)
+* [ ] **PlayerConfigSO:** Stores initial player parameters (jump force, gravity, running speed, lives).
+* [ ] **GameConfigSO:** Progressive difficulty settings (gradual global speed increase over time).
+
+## 4. Visual Effects (VFX)
+* [ ] Integration of at least one `ParticleSystem` (e.g., dust puff on run/land, crash explosion) or `TrailRenderer` (trail while jumping or dashing).
+
+## 5. Audio & Mixer
+* [ ] Setup routed through an `AudioMixer` with volume controls accessible via UI Settings.
+* [ ] Audio implementation for at least 3 distinct interactions:
+  * Background Music: Main Menu and Gameplay.
+  * SFX: Jump/Land, Collectible/Power-up pickup, Game Over (defeat), UI button clicks.
