@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dcca0cdc5cc63c4d8e3fd71aaca53b6, type: 3}
   m_Name: PlayerConfigSO
   m_EditorClassIdentifier: Assembly-CSharp::PlayerConfigSO
-  jumpForce: 10
+  jumpForce: 8
   checkGround: 0.2
   groundLayer:
     serializedVersion: 2
