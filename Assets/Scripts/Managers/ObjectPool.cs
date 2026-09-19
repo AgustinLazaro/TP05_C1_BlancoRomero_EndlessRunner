@@ -16,12 +16,10 @@ public class ObjectPool : MonoBehaviour
 
     private void InitializePool()
     {
-        int count = 0;
-
-        while (count < initialPoolSize)
+        for (int i = 0; i < initialPoolSize; i++)
         {
-            CreateNewInstance();
-            count++;
+            GameObject obj = CreateNewInstance();
+            poolQueue.Enqueue(obj); 
         }
     }
 
@@ -29,8 +27,7 @@ public class ObjectPool : MonoBehaviour
     {
         GameObject newObject = Instantiate(prefab, transform);
         newObject.SetActive(false);
-        poolQueue.Enqueue(newObject);
-        return newObject;
+        return newObject; 
     }
 
     public GameObject Get(Vector3 position)
@@ -43,7 +40,7 @@ public class ObjectPool : MonoBehaviour
         }
         else
         {
-            objectSpawn = CreateNewInstance();
+            objectSpawn = CreateNewInstance(); 
         }
 
         objectSpawn.transform.position = position;
