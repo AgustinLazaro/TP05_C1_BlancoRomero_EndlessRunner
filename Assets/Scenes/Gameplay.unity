@@ -791,7 +791,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5e6781b625c144cae6c3a82ff751df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoopingGround
-  speed: 5
   leftLimit: -30
   resetDistance: 60
 --- !u!1 &1024938956 stripped
@@ -816,7 +815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5e6781b625c144cae6c3a82ff751df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoopingGround
-  speed: 5
   leftLimit: -30
   resetDistance: 60
 --- !u!1 &1608233758
@@ -926,6 +924,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2054420864}
+  - component: {fileID: 2054420865}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -948,6 +947,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 421667981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2054420865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054420863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d93af2de50d45c4eb7f90ae120525ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  baseSpeed: 5
+  scoreMultiplier: 1
+  currentScore: 0
 --- !u!1 &2130558255
 GameObject:
   m_ObjectHideFlags: 0
