@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float currentScore;
 
     private float powerUpTimer = 0f;
+    private bool wasBoostActive = false;
 
     private void Awake()
     {
@@ -30,6 +31,11 @@ public class GameManager : MonoBehaviour
         else
         {
             currentSpeed = baseSpeed;
+            if (wasBoostActive)
+            {
+                Debug.Log("vuelve a velocidad normal");
+                wasBoostActive = false;
+            }
         }
 
         UpdateScore();
@@ -55,6 +61,7 @@ public class GameManager : MonoBehaviour
     public void TriggerPowerUp()
     {
         powerUpTimer = 5f;
+        wasBoostActive = true;
+        Debug.Log("Velocidad duplicada x 5 s.");
     }
-
 }
