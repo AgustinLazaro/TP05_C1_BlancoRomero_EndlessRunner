@@ -19,6 +19,11 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.BoostActive())
+        {
+            return;
+        }
+
         timer += Time.deltaTime;
 
         if (timer >= currentSpawnInterval)
