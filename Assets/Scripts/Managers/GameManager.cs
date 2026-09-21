@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Score Settings")]
     [SerializeField] private float scoreMultiplier = 1f;
-    private float currentScore;
+    [SerializeField] private float currentScore;
 
     public float GetCurrentSpeed()
     {
@@ -35,8 +35,9 @@ public class GameManager : MonoBehaviour
 
     private void UpdateScore()
     {
-        float scoreToAdd = currentSpeed * scoreMultiplier * Time.deltaTime;
-        currentScore = currentScore + scoreToAdd;
+        float scoreAdd = currentSpeed * scoreMultiplier * Time.deltaTime;
+        currentScore = currentScore + scoreAdd;
+        Debug.Log("Puntaje: " + currentScore.ToString("F0"));
     }
 
     public void SetSpeed(float newSpeed)
