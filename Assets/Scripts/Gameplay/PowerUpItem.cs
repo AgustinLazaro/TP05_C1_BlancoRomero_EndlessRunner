@@ -12,7 +12,8 @@ public class PowerUpItem : MonoBehaviour
     {
         if (other.TryGetComponent<PlayerController>(out PlayerController player))
         {
-            Debug.Log(" power up agarrado");
+            GameManager.Instance.TriggerPowerUp();
+            Debug.Log("power up agarrado");
             gameObject.SetActive(false);
         }
     }
