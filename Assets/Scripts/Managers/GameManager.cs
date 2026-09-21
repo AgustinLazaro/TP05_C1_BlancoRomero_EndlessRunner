@@ -13,10 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float currentScore;
 
     private float powerUpTimer = 0f;
-    public float GetCurrentSpeed()
-    {
-        return currentSpeed;
-    }
 
     private void Awake()
     {
@@ -44,6 +40,16 @@ public class GameManager : MonoBehaviour
         float scoreAdd = currentSpeed * scoreMultiplier * Time.deltaTime;
         currentScore = currentScore + scoreAdd;
         Debug.Log("Puntaje: " + currentScore.ToString("F0"));
+    }
+
+    public float GetCurrentSpeed()
+    {
+        return currentSpeed;
+    }
+
+    public bool BoostActive()
+    {
+        return powerUpTimer > 0f;
     }
 
     public void TriggerPowerUp()

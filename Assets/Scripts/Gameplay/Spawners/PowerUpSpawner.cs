@@ -14,28 +14,35 @@ public class PowerUpSpawner : MonoBehaviour
 
     private void Start()
     {
-        SetNextInterval();
+        NextInterval();
     }
 
     private void Update()
     {
+        if (GameManager.Instance.BoostActive())
+        {
+            return;
+        }
+
         timer += Time.deltaTime;
 
         if (timer >= currentSpawnInterval)
         {
             SpawnPowerUp();
             timer = 0f;
-            SetNextInterval();
+            NextInterval();
         }
     }
+
 
     private void SpawnPowerUp()
     {
         powerUpPool.Get(transform.position);
     }
 
-    private void SetNextInterval()
+    private void NextInterval()
     {
         currentSpawnInterval = Random.Range(minSpawnTime, maxSpawnTime);
     }
 }
+
