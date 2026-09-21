@@ -7,7 +7,7 @@ public class PoolReturn : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PowerUpItem>(out _))
+        if (collision.TryGetComponent<PowerUpItemMovement>(out _))
         {
             powerUpPool.ReturnToPool(collision.gameObject);
             return;

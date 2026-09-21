@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PowerUpItem : MonoBehaviour
+public class PowerUpItemMovement : MonoBehaviour
 {
     private void Update()
     {

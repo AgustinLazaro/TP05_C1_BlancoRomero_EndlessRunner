@@ -960,6 +960,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   baseSpeed: 5
+  boostMultiplier: 4
+  boostDuration: 5
   scoreMultiplier: 1
   currentScore: 0
 --- !u!1 &2130558255
