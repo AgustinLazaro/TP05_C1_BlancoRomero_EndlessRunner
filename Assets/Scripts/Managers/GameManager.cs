@@ -8,12 +8,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float baseSpeed = 5f;
     private float currentSpeed;
 
+    [Header("Power Up Settings")]
+    [SerializeField] private float boostMultiplier = 2f;
+    [SerializeField] private float boostDuration = 5f;
+    private float powerUpTimer = 0f;
+    private bool wasBoostActive = false;
+
     [Header("Score Settings")]
     [SerializeField] private float scoreMultiplier = 1f;
     [SerializeField] private float currentScore;
-
-    private float powerUpTimer = 0f;
-    private bool wasBoostActive = false;
 
     private void Awake()
     {
@@ -26,7 +29,7 @@ public class GameManager : MonoBehaviour
         if (powerUpTimer > 0f)
         {
             powerUpTimer -= Time.deltaTime;
-            currentSpeed = baseSpeed * 2f;
+            currentSpeed = baseSpeed * boostMultiplier;
         }
         else
         {
@@ -60,8 +63,8 @@ public class GameManager : MonoBehaviour
 
     public void TriggerPowerUp()
     {
-        powerUpTimer = 5f;
+        powerUpTimer = boostDuration;
         wasBoostActive = true;
-        Debug.Log("Velocidad duplicada x 5 s.");
+        Debug.Log($"PowerUp activado: x{boostMultiplier} velocidad por {boostDuration}s.");
     }
 }
