@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     [Header("Score Settings")]
     [SerializeField] private float scoreMultiplier = 1f;
     [SerializeField] private float currentScore;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     private void Awake()
     {
@@ -47,10 +49,9 @@ public class GameManager : MonoBehaviour
     private void UpdateScore()
     {
         float scoreAdd = currentSpeed * scoreMultiplier * Time.deltaTime;
-        currentScore = currentScore + scoreAdd;
-        Debug.Log("Puntaje: " + currentScore.ToString("F0"));
+        currentScore += scoreAdd;
+        scoreText.text = currentScore.ToString("0");
     }
-
     public float GetCurrentSpeed()
     {
         return currentSpeed;
