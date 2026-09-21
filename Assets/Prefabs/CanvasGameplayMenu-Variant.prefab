@@ -2930,8 +2930,40 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1018875732672933594, guid: 31473ccc1e81f5e4e924cbf180234d6f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 921955994940038760}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8635168959162516428, guid: 31473ccc1e81f5e4e924cbf180234d6f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8458899657080482064}
   m_SourcePrefab: {fileID: 100100000, guid: 31473ccc1e81f5e4e924cbf180234d6f, type: 3}
+--- !u!1 &1673365601881517540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8635168959162516428, guid: 31473ccc1e81f5e4e924cbf180234d6f, type: 3}
+  m_PrefabInstance: {fileID: 6984719414245322280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-8458899657080482064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673365601881517540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b3fc86c51d9b040852a60442f9d463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayMenuUI
+  _pauseMenuPanel: {fileID: 0}
+  _optionsPanel: {fileID: 0}
+  _gameplayConfigPanel: {fileID: 0}
+  _audioPanel: {fileID: 0}
+  _continueButton: {fileID: 0}
+  _optionsButton: {fileID: 0}
+  _backToMenuButton: {fileID: 0}
+  _openGameplayConfigButton: {fileID: 0}
+  _openAudioPanelButton: {fileID: 0}
+  _backOptionsButton: {fileID: 0}
+  _backFromGameplayButton: {fileID: 0}
+  _backFromAudioButton: {fileID: 0}
 --- !u!224 &7984164537565806834 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1018875732672933594, guid: 31473ccc1e81f5e4e924cbf180234d6f, type: 3}
