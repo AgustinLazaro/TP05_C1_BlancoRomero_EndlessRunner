@@ -1,20 +1,20 @@
 using UnityEngine;
 
-public class ObstacleSpawner : MonoBehaviour
+public class PowerUpSpawner : MonoBehaviour
 {
     [Header("Pool Reference")]
-    [SerializeField] private ObjectPool obstaclePool;
+    [SerializeField] private ObjectPool powerUpPool;
 
     [Header("Spawn Rate")]
-    [SerializeField] private float minSpawnTime = 1.5f;
-    [SerializeField] private float maxSpawnTime = 3f;
+    [SerializeField] private float minSpawnTime = 5f;
+    [SerializeField] private float maxSpawnTime = 9f;
 
     private float timer;
     private float currentSpawnInterval;
 
     private void Start()
     {
-        SpawnInterval();
+        SetNextInterval();
     }
 
     private void Update()
@@ -23,18 +23,18 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (timer >= currentSpawnInterval)
         {
-            SpawnObstacle();
+            SpawnPowerUp();
             timer = 0f;
-            SpawnInterval();
+            SetNextInterval();
         }
     }
 
-    private void SpawnObstacle()
+    private void SpawnPowerUp()
     {
-        obstaclePool.Get(transform.position);
+        powerUpPool.Get(transform.position);
     }
 
-    private void SpawnInterval()
+    private void SetNextInterval()
     {
         currentSpawnInterval = Random.Range(minSpawnTime, maxSpawnTime);
     }
