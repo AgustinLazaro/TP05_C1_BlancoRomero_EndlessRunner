@@ -1,14 +1,14 @@
 # Project Requirements - TP05.1 Endless Runner 2D
 
 ## 1. Conventions & Structure
-* **Repository & Project:** `TP05_C1_BlancoRomero_EndlessRunner` (or preferred title).
-* **Architecture:** Strict decoupling via ScriptableObjects and component-based OOP.
-* **Memory Management:** Mandatory use of Object Pooling for continuous obstacle and environment generation.
+* [ ]**Repository & Project:** `TP05_C1_BlancoRomero_EndlessRunner` (or preferred title).
+* [ ]**Architecture:** Strict decoupling via ScriptableObjects and component-based OOP.
+* [ ]**Memory Management:** Mandatory use of Object Pooling for continuous obstacle and environment generation.
 
 ## 2. Core Gameplay (Endless Runner)
-* [ ] **Continuous Movement:** The player moves forward continuously with no way to stop.
-* [ ] **Jump:** Jumping mechanics with robust ground detection (GroundCheck).
-* [ ] **Random Spawner:** Dynamic spawning of obstacles and platforms at randomized distances and heights using Object Pooling.
+* [x] **Continuous Movement:** The player moves forward continuously with no way to stop.
+* [x] **Jump:** Jumping mechanics with robust ground detection (GroundCheck).
+* [x] **Random Spawner:** Dynamic spawning of obstacles and platforms at randomized distances and heights using Object Pooling.
 * [ ] **Power-Ups / Modifiers:** Pickups or events that subtly alter gameplay (e.g., double jump, temporary invincibility, speed modifiers).
 * [ ] **Game Over Loop:** Lethal collision detection with obstacles and match restart/reset flow.
 
