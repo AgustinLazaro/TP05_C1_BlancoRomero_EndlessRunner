@@ -1,26 +1,38 @@
-# Project Requirements - TP05.1 Endless Runner 2D
+# TP05 - 2D Endless Runner (v05.2)
 
-## 1. Conventions & Structure
-* [ ]**Repository & Project:** `TP05_C1_BlancoRomero_EndlessRunner` (or preferred title).
-* [ ]**Architecture:** Strict decoupling via ScriptableObjects and component-based OOP.
-* [ ]**Memory Management:** Mandatory use of Object Pooling for continuous obstacle and environment generation.
+## Project Requirements
 
-## 2. Core Gameplay (Endless Runner)
-* [x] **Continuous Movement:** The player moves forward continuously with no way to stop.
-* [x] **Jump:** Jumping mechanics with robust ground detection (GroundCheck).
-* [x] **Random Spawner:** Dynamic spawning of obstacles and platforms at randomized distances and heights using Object Pooling.
-* [ ] **Power-Ups / Modifiers:** Pickups or events that subtly alter gameplay (e.g., double jump, temporary invincibility, speed modifiers).
-* [ ] **Game Over Loop:** Lethal collision detection with obstacles and match restart/reset flow.
+### 1. Conventions & Structure
+- [ ] **Repository & Project:** Continue within the same repository (`TP05_C1_BlancoRomero_EndlessRunner`).
+- [ ] **Architecture:** Strict decoupling via ScriptableObjects and component-based OOP.
+- [ ] **Memory Management:** Mandatory use of Object Pooling for continuous obstacle and environment generation.
+- [x] **Scene Management:** Main Menu and Gameplay separated into two distinct scenes.
 
-## 3. Data & Configuration (ScriptableObjects)
-* [ ] **PlayerConfigSO:** Stores initial player parameters (jump force, gravity, running speed, lives).
-* [ ] **GameConfigSO:** Progressive difficulty settings (gradual global speed increase over time).
+### 2. Core Gameplay (Endless Runner)
+- [x] **Continuous Movement:** The player moves forward continuously with no way to stop.
+- [x] **Jump:** Jumping mechanics with robust ground detection (`GroundCheck`).
+- [x] **Random Spawner:** Dynamic spawning of obstacles and platforms at randomized distances and heights using Object Pooling.
+- [ ] **Power-Ups:**
+  - [ ] **Invincibility:** 5-second duration with a visible on-screen UI timer (player ignores obstacle collisions).
+  - [ ] **Extra Life:** Grants 1 additional life upon pickup.
+- [ ] **Game Over Loop:** Lethal collision detection against obstacles (when unprotected and out of lives) with match restart/reset flow.
 
-## 4. Visual Effects (VFX)
-* [ ] Integration of at least one `ParticleSystem` (e.g., dust puff on run/land, crash explosion) or `TrailRenderer` (trail while jumping or dashing).
+### 3. Visuals, Art & VFX
+- [ ] **Parallax Effect:**
+  - [ ] At least 3 background layers moving with parallax depth.
+  - [ ] Modular architecture supporting future biome swapping.
+- [ ] **2D Animations:**
+  - [ ] Player character (run, jump/fall).
+  - [ ] Obstacles (idle or contextual movement).
+  - [ ] Pickables / Power-ups: basic sprite animation (floating bobbing up/down or sprite rotation).
+- [ ] **Effects:** Integration of at least one `ParticleSystem` (running/landing dust puff, crash impact) or `TrailRenderer` (jump trail).
 
-## 5. Audio & Mixer
-* [ ] Setup routed through an `AudioMixer` with volume controls accessible via UI Settings.
-* [ ] Audio implementation for at least 3 distinct interactions:
-  * Background Music: Main Menu and Gameplay.
-  * SFX: Jump/Land, Collectible/Power-up pickup, Game Over (defeat), UI button clicks.
+### 4. Data & Configuration (ScriptableObjects)
+- [ ] **PlayerConfigSO:** Player parameters (jump force, gravity, base speed, initial lives).
+- [ ] **GameConfigSO:** Progressive difficulty settings (gradual global speed increase over time).
+
+### 5. Audio & Mixer
+- [ ] Full routing through an `AudioMixer` with exposed parameters controlled via UI Settings sliders.
+- [ ] Audio implementation for key interactions:
+  - **BGM:** Background music for Main Menu and Gameplay.
+  - **SFX:** Jump/land, item/power-up pickup, game over defeat, and UI button clicks.
