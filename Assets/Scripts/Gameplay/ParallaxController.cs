@@ -21,6 +21,15 @@ public class ParallaxController : MonoBehaviour
 
     private void Update()
     {
-     
+        if (gameManager)
+        {
+            float currentSpeed = gameManager.CurrentSpeed;
+
+            if (currentSpeed > 0f)
+            {
+                // Solo para verificar en consola que lee la velocidad
+                // Debug.Log($"Game speed: {currentSpeed}");
+            }
+        }
     }
 }

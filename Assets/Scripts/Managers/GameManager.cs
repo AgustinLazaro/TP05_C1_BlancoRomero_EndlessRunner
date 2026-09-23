@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float currentScore;
     [SerializeField] private TextMeshProUGUI scoreText;
 
+    public float CurrentSpeed => currentSpeed;
     private void Awake()
     {
         Instance = this;
