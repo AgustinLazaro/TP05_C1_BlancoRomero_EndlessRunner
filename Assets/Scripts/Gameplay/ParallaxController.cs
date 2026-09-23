@@ -27,8 +27,21 @@ public class ParallaxController : MonoBehaviour
 
             if (currentSpeed > 0f)
             {
-                // Solo para verificar en consola que lee la velocidad
-                // Debug.Log($"Game speed: {currentSpeed}");
+                for (int i = 0; i < layers.Length; i++)
+                {
+                    if (layers[i].SpriteRenderer)
+                    {
+                        if (layers[i].RelativeSpeed > 0f)
+                        {
+                            Transform layerTransform = layers[i].SpriteRenderer.transform;
+                            float moveDistance = currentSpeed * layers[i].RelativeSpeed * Time.deltaTime;
+
+                            Vector3 currentPosition = layerTransform.position;
+                            currentPosition.x = currentPosition.x - moveDistance;
+                            layerTransform.position = currentPosition;
+                        }
+                    }
+                }
             }
         }
     }
