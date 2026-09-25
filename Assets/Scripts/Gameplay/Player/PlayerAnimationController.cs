@@ -11,7 +11,7 @@ public class PlayerAnimationController : MonoBehaviour
     }
 
     private void Update()
-    { 
+    {
         SetRunning(GameManager.Instance.BoostActive());
     }
 
@@ -23,5 +23,15 @@ public class PlayerAnimationController : MonoBehaviour
     public void SetRunning(bool isRunning)
     {
         animator.SetBool("IsRunning", isRunning);
+    }
+
+    public void TriggerHit()
+    {
+        animator.SetTrigger("Hit");
+    }
+
+    public void TriggerDeath()
+    {
+        animator.SetTrigger("Die");
     }
 }
