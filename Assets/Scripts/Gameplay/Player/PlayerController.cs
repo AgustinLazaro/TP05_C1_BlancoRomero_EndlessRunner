@@ -22,6 +22,14 @@ public class PlayerController : MonoBehaviour
         HandleJump();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<ObstacleMovement>(out _))
+        {
+            playerVisuals.TriggerHit();
+        }
+    }
+
     private void CheckGrounded()
     {
         RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, rayDistance, playerConfig.GroundLayer);
@@ -38,10 +46,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
-    {
-        playerVisuals.TriggerHit();
-    }
 
     private void OnDrawGizmosSelected()
     {
