@@ -8,13 +8,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rayDistance = 0.2f;
 
     private Rigidbody2D rb;
-    private Animator animator;
+    private PlayerAnimationController playerVisuals;
     private bool isGrounded;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponentInChildren<Animator>();
+        playerVisuals = GetComponentInChildren<PlayerAnimationController>();
     }
 
     private void Update()
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, rayDistance, playerConfig.GroundLayer);
         isGrounded = hit.collider;
 
-        animator.SetBool("IsGrounded", isGrounded);
+        playerVisuals.SetGrounded(isGrounded);
     }
 
     private void HandleJump()
