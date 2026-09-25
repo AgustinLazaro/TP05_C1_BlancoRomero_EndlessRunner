@@ -5,41 +5,47 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [Header("Speed Settings")]
-    [SerializeField] private float baseSpeed = 5f;
-    private float currentSpeed;
+    [Header("Configuration")]
+    [SerializeField] private GameConfigSO config;
 
-    [Header("Power Up Settings")]
-    [SerializeField] private float boostMultiplier = 2f;
-    [SerializeField] private float boostDuration = 5f;
+    private float baseSpeed;
+    private float currentSpeed;
     private float powerUpTimer = 0f;
     private bool wasBoostActive = false;
 
     [Header("Score Settings")]
-    [SerializeField] private float scoreMultiplier = 1f;
     [SerializeField] private float currentScore;
     [SerializeField] private TextMeshProUGUI scoreText;
 
     public float CurrentSpeed => currentSpeed;
+
     private void Awake()
     {
         Instance = this;
+
+        baseSpeed = config.InitialSpeed;
         currentSpeed = baseSpeed;
     }
 
     private void Update()
     {
+        if (baseSpeed < config.MaxSpeed)
+        {
+            baseSpeed += config.SpeedIncreaseRate * Time.deltaTime;
+            baseSpeed = Mathf.Min(baseSpeed, config.MaxSpeed);
+        }
+
         if (powerUpTimer > 0f)
         {
             powerUpTimer -= Time.deltaTime;
-            currentSpeed = baseSpeed * boostMultiplier;
+            currentSpeed = baseSpeed * config.BoostMultiplier;
         }
         else
         {
             currentSpeed = baseSpeed;
             if (wasBoostActive)
             {
-                Debug.Log("vuelve a velocidad normal");
+                Debug.Log("Vuelve a velocidad normal");
                 wasBoostActive = false;
             }
         }
@@ -49,10 +55,11 @@ public class GameManager : MonoBehaviour
 
     private void UpdateScore()
     {
-        float scoreAdd = currentSpeed * scoreMultiplier * Time.deltaTime;
+        float scoreAdd = currentSpeed * config.ScoreMultiplier * Time.deltaTime;
         currentScore += scoreAdd;
         scoreText.text = currentScore.ToString("0");
     }
+
     public float GetCurrentSpeed()
     {
         return currentSpeed;
@@ -65,8 +72,8 @@ public class GameManager : MonoBehaviour
 
     public void TriggerPowerUp()
     {
-        powerUpTimer = boostDuration;
+        powerUpTimer = config.BoostDuration;
         wasBoostActive = true;
-        Debug.Log($"PowerUp activado: x{boostMultiplier} velocidad por {boostDuration}s.");
+        Debug.Log($"PowerUp activado: x{config.BoostMultiplier} velocidad por {config.BoostDuration}s.");
     }
 }

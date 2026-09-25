@@ -1338,10 +1338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d93af2de50d45c4eb7f90ae120525ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  baseSpeed: 5
-  boostMultiplier: 4
-  boostDuration: 5
-  scoreMultiplier: 1
+  config: {fileID: 11400000, guid: 647022416e4dd80449ce159bde5ccd26, type: 2}
   currentScore: 0
   scoreText: {fileID: 1092035160}
 --- !u!1 &2130558255
