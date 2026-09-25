@@ -38,6 +38,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void TakeDamage()
+    {
+        playerVisuals.TriggerHit();
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
