@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     [Header("Score Settings")]
     [SerializeField] private float currentScore;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI speedText;
+
+    private int lastDisplayedSpeed = -1;
 
     public float CurrentSpeed => currentSpeed;
 
@@ -51,6 +54,7 @@ public class GameManager : MonoBehaviour
         }
 
         UpdateScore();
+        UpdateSpeedUI();
     }
 
     private void UpdateScore()
@@ -58,6 +62,17 @@ public class GameManager : MonoBehaviour
         float scoreAdd = currentSpeed * config.ScoreMultiplier * Time.deltaTime;
         currentScore += scoreAdd;
         scoreText.text = currentScore.ToString("0");
+    }
+
+    private void UpdateSpeedUI()
+    {
+        int speedInt = Mathf.FloorToInt(currentSpeed);
+
+        if (speedInt != lastDisplayedSpeed)
+        {
+            lastDisplayedSpeed = speedInt;
+            speedText.text = $"speed = {speedInt}x";
+        }
     }
 
     public float GetCurrentSpeed()
