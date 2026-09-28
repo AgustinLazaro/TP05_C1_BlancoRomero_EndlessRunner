@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     {
         CheckGrounded();
         HandleJump();
+        playerVisuals.SetRunning(GameManager.Instance.BoostActive());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

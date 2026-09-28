@@ -9,11 +9,6 @@ public class PlayerAnimationController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        SetRunning(GameManager.Instance.BoostActive());
-    }
-
     public void SetGrounded(bool isGrounded)
     {
         animator.SetBool("IsGrounded", isGrounded);
