@@ -12,9 +12,11 @@ public class GameManager : MonoBehaviour
     private float powerUpTimer = 0f;
     private bool wasBoostActive = false;
     private float currentScore = 0f;
+    private bool isGameOver = false;
 
     public float CurrentSpeed => currentSpeed;
     public float CurrentScore => currentScore;
+    public bool IsGameOver => isGameOver;
 
     private void Awake()
     {
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (isGameOver) return;
+
         UpdateSpeeds();
         CalculateScore();
     }
@@ -66,8 +70,18 @@ public class GameManager : MonoBehaviour
 
     public void TriggerPowerUp()
     {
+        if (isGameOver) return;
+
         powerUpTimer = config.BoostDuration;
         wasBoostActive = true;
         Debug.Log($"PowerUp activado: x{config.BoostMultiplier} velocidad por {config.BoostDuration}s.");
+    }
+
+    public void GameOver()
+    {
+        if (isGameOver) return;
+
+        isGameOver = true;
+        currentSpeed = 0f;
     }
 }

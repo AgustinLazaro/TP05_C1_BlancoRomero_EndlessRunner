@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         if (collision.TryGetComponent<ObstacleMovement>(out _))
         {
             playerVisuals.TriggerHit();
+            GameManager.Instance.GameOver();
         }
     }
 
