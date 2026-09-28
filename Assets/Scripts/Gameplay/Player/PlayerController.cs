@@ -1,23 +1,35 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static event Action<float, float> OnHealthChanged;
+
     [SerializeField] private PlayerConfigSO playerConfig;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private float rayDistance = 0.2f;
 
+    private float currentHealth;
     private Rigidbody2D rb;
     private PlayerAnimationController playerVisuals;
     private bool isGrounded;
+    private bool isDead;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerVisuals = GetComponentInChildren<PlayerAnimationController>();
+        currentHealth = playerConfig.MaxHealth;
+    }
+
+    private void Start()
+    {
+        OnHealthChanged?.Invoke(currentHealth, playerConfig.MaxHealth);
     }
 
     private void Update()
     {
+        if (isDead) return;
+
         CheckGrounded();
         HandleJump();
         playerVisuals.SetRunning(GameManager.Instance.BoostActive());
@@ -25,16 +37,41 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isDead) return;
+
         if (collision.TryGetComponent<ObstacleMovement>(out _))
         {
-            playerVisuals.TriggerHit();
-            GameManager.Instance.GameOver();
+            TakeDamage(playerConfig.DamagePerHit);
         }
+    }
+
+    private void TakeDamage(float amount)
+    {
+        currentHealth -= amount;
+        currentHealth = Mathf.Max(0, currentHealth);
+
+        OnHealthChanged?.Invoke(currentHealth, playerConfig.MaxHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            playerVisuals.TriggerHit();
+        }
+    }
+
+    private void Die()
+    {
+        isDead = true;
+        playerVisuals.TriggerHit();
+        GameManager.Instance.GameOver();
     }
 
     private void CheckGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, rayDistance, playerConfig.GroundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, playerConfig.CheckGround, playerConfig.GroundLayer);
         isGrounded = hit.collider;
 
         playerVisuals.SetGrounded(isGrounded);
@@ -46,12 +83,5 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.up * playerConfig.JumpForce, ForceMode2D.Impulse);
         }
-    }
-
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * rayDistance);
     }
 }
