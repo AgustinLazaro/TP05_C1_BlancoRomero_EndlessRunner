@@ -1072,10 +1072,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasGameplayMenu-Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1929510910488466517, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
+      propertyPath: m_Name
+      value: DefeatText (TMP)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365265499684085682, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
+      propertyPath: m_Name
+      value: DefeatPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365265499684085682, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376536249831781114, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
+      propertyPath: m_Name
+      value: Defeat
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376536249831781114, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3736982611921583478, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
       propertyPath: m_Name
       value: Text_Score
       objectReference: {fileID: 0}
+    - target: {fileID: 4198208546201329298, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 4198208546201329298, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 6521525334236043736, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 460

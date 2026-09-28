@@ -1,9 +1,8 @@
-using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager Instance { get; private set; }
 
     [Header("Configuration")]
     [SerializeField] private GameConfigSO config;
@@ -12,15 +11,10 @@ public class GameManager : MonoBehaviour
     private float currentSpeed;
     private float powerUpTimer = 0f;
     private bool wasBoostActive = false;
-
-    [Header("Score Settings")]
-    [SerializeField] private float currentScore;
-    [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI speedText;
-
-    private int lastDisplayedSpeed = -1;
+    private float currentScore = 0f;
 
     public float CurrentSpeed => currentSpeed;
+    public float CurrentScore => currentScore;
 
     private void Awake()
     {
@@ -31,6 +25,12 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update()
+    {
+        UpdateSpeeds();
+        CalculateScore();
+    }
+
+    private void UpdateSpeeds()
     {
         if (baseSpeed < config.MaxSpeed)
         {
@@ -52,32 +52,11 @@ public class GameManager : MonoBehaviour
                 wasBoostActive = false;
             }
         }
-
-        UpdateScore();
-        UpdateSpeedUI();
     }
 
-    private void UpdateScore()
+    private void CalculateScore()
     {
-        float scoreAdd = currentSpeed * config.ScoreMultiplier * Time.deltaTime;
-        currentScore += scoreAdd;
-        scoreText.text = currentScore.ToString("0");
-    }
-
-    private void UpdateSpeedUI()
-    {
-        int speedInt = Mathf.FloorToInt(currentSpeed);
-
-        if (speedInt != lastDisplayedSpeed)
-        {
-            lastDisplayedSpeed = speedInt;
-            speedText.text = $"speed = {speedInt}x";
-        }
-    }
-
-    public float GetCurrentSpeed()
-    {
-        return currentSpeed;
+        currentScore += currentSpeed * config.ScoreMultiplier * Time.deltaTime;
     }
 
     public bool BoostActive()
