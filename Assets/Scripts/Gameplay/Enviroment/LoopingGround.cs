@@ -7,7 +7,7 @@ public class LoopingGround : MonoBehaviour
 
     private void Update()
     {
-        float currentSpeed = GameManager.Instance.GetCurrentSpeed();
+        float currentSpeed = GameManager.Instance.CurrentSpeed;
 
         transform.position += Vector3.left * (currentSpeed * Time.deltaTime);
 
