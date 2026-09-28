@@ -982,7 +982,7 @@ GameObject:
   - component: {fileID: 805146859}
   - component: {fileID: 805146860}
   m_Layer: 0
-  m_Name: Slider
+  m_Name: SliderHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1054,9 +1054,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 25
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 25
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1235,6 +1235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HUDController
   _scoreText: {fileID: 1092035160}
   _speedText: {fileID: 1953614279}
+  _healthSlider: {fileID: 805146860}
 --- !u!1 &1268103501
 GameObject:
   m_ObjectHideFlags: 0

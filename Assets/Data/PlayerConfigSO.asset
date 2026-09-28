@@ -17,3 +17,5 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  maxHealth: 25
+  damageHit: 25

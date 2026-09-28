@@ -1,13 +1,25 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _speedText;
+    [SerializeField] private Slider _healthSlider;
 
     private int _lastDisplayedSpeed = -1;
+
+    private void OnEnable()
+    {
+        PlayerController.OnHealthChanged += UpdateHealthBar;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController.OnHealthChanged -= UpdateHealthBar;
+    }
 
     private void Update()
     {
@@ -29,5 +41,11 @@ public class HUDController : MonoBehaviour
             _lastDisplayedSpeed = speedInt;
             _speedText.text = $"speed = {speedInt}x";
         }
+    }
+
+    private void UpdateHealthBar(float currentHealth, float maxHealth)
+    {
+        _healthSlider.maxValue = maxHealth;
+        _healthSlider.value = currentHealth;
     }
 }
